@@ -798,6 +798,398 @@ ol {
     transform: none;
 }
 
+/* ===== Landing intro ===== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.landing {
+    display: none;
+}
+
+.show-landing .landing {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: block;
+    color: var(--text);
+    font-family: var(--mono);
+    overflow: hidden;
+    touch-action: none;
+}
+
+.landing-lock,
+.landing-lock body {
+    overflow: hidden;
+}
+
+@media (pointer: fine) {
+    .landing,
+    .landing button {
+        cursor: none;
+    }
+}
+
+.landing__shutters {
+    position: absolute;
+    inset: 0;
+    display: flex;
+}
+
+.landing__shutters span {
+    flex: 1;
+    height: 100%;
+    background: var(--bg);
+    border-bottom: 3px solid var(--accent);
+    margin-right: -1px;
+    transition: transform 0.95s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.landing__shutters span:nth-child(2) { transition-delay: 0.06s; }
+.landing__shutters span:nth-child(3) { transition-delay: 0.12s; }
+.landing__shutters span:nth-child(4) { transition-delay: 0.18s; }
+.landing__shutters span:nth-child(5) { transition-delay: 0.24s; }
+
+.landing.is-leaving .landing__shutters span {
+    transform: translateY(calc(-100% - 4px));
+}
+
+/* faint grid behind the particles */
+.landing__shutters::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 20% 25%;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.landing.is-leaving .landing__shutters::after {
+    opacity: 0;
+}
+
+.landing__canvas {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.7s ease 0.15s;
+}
+
+.landing.is-leaving .landing__canvas {
+    opacity: 0;
+}
+
+.landing__ui {
+    position: absolute;
+    inset: 0;
+    padding: 24px clamp(16px, 3vw, 36px);
+    pointer-events: none;
+    transition: opacity 0.35s, transform 0.35s;
+}
+
+.landing.is-leaving .landing__ui {
+    opacity: 0;
+    transform: translateY(-12px);
+}
+
+.landing__ui button {
+    pointer-events: auto;
+}
+
+.landing__top,
+.landing__bottom {
+    position: absolute;
+    left: clamp(16px, 3vw, 36px);
+    right: clamp(16px, 3vw, 36px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+
+.landing__top {
+    top: 22px;
+    animation: landing-drop 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.landing__slash {
+    color: var(--accent);
+    margin: 0 6px;
+}
+
+.landing__skip {
+    font: inherit;
+    letter-spacing: inherit;
+    color: var(--text);
+    background: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    padding: 6px 12px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.landing__skip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.landing__skip i {
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+.landing__center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 62%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    padding: 0 16px;
+}
+
+.landing__line {
+    min-height: 1.6em;
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    color: var(--muted);
+}
+
+.landing__line--main {
+    font-size: clamp(14px, 1.6vw, 17px);
+    color: var(--text);
+}
+
+.landing__enter {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 22px;
+    padding: 8px 8px 8px 24px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: rgba(17, 17, 16, 0.6);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s, background 0.25s, opacity 0.6s;
+}
+
+.landing.is-ready .landing__enter {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s, 0s, 0s, 0.7s;
+}
+
+.landing__enter:focus-visible {
+    outline: none;
+}
+
+.landing__enter:hover,
+.landing__enter:focus-visible {
+    border-color: var(--accent);
+    background: rgba(245, 127, 24, 0.08);
+}
+
+.landing__enter-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #1a0d02;
+    overflow: hidden;
+}
+
+.landing__enter-icon i {
+    animation: landing-nudge 1.6s ease-in-out infinite;
+}
+
+.landing__hint {
+    margin-top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.6s 1s;
+}
+
+.landing.is-ready .landing__hint {
+    opacity: 1;
+}
+
+.landing__bottom {
+    bottom: 22px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+}
+
+.landing__load {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: opacity 0.5s;
+}
+
+.landing.is-ready .landing__load {
+    opacity: 0.45;
+}
+
+.landing__count {
+    font-size: 13px;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.landing__bar {
+    flex: 1;
+    height: 1px;
+    background: var(--line-strong);
+    overflow: hidden;
+}
+
+.landing__bar span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.landing__marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.landing__track {
+    display: flex;
+    gap: 22px;
+    width: max-content;
+    animation: landing-marquee 28s linear infinite;
+}
+
+.landing__track span {
+    color: var(--text);
+    opacity: 0.7;
+}
+
+.landing__track i {
+    font-style: normal;
+    color: var(--accent);
+}
+
+.landing__cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 34px;
+    margin: -17px 0 0 -17px;
+    border: 1px solid var(--text);
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transition: width 0.25s, height 0.25s, margin 0.25s, background 0.25s, border-color 0.25s;
+}
+
+.landing__cursor::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    margin: -2px 0 0 -2px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.landing__cursor.is-hover {
+    width: 70px;
+    height: 70px;
+    margin: -35px 0 0 -35px;
+    background: var(--text);
+}
+
+.landing.is-leaving .landing__cursor {
+    opacity: 0;
+}
+
+@keyframes landing-drop {
+    from { opacity: 0; transform: translateY(-12px); }
+}
+
+@keyframes landing-marquee {
+    to { transform: translateX(-50%); }
+}
+
+@keyframes landing-nudge {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+}
+
+/* hero comes in after the intro */
+[data-intro] {
+    transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+.show-landing:not(.is-entered) [data-intro] {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.hero__line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.04em;
+}
+
+.hero__line > span {
+    display: block;
+}
+
+.show-landing:not(.is-entered) .hero__line > [data-intro] {
+    opacity: 1;
+    transform: translateY(105%);
+}
+
+.footer__replay {
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.footer__replay:hover {
+    color: var(--accent);
+}
+
+.footer__replay i {
+    font-size: 12px;
+    margin-right: 4px;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 1000px) {
     .hero {
@@ -914,6 +1306,12 @@ ol {
     .footer {
         padding-left: 16px;
         padding-right: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .landing__clock {
+        display: none;
     }
 }
 

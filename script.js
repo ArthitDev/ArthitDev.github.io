@@ -376,6 +376,20 @@ document.addEventListener('DOMContentLoaded', () => {
     fillDynamicText();
     setupNav();
     setupReveal();
-    runTerminal();
-    typeRoles();
+    startHeroWhenReady();
 });
+
+// รอให้ landing intro จบก่อนค่อยเริ่มพิมพ์ terminal
+function startHeroWhenReady() {
+    const root = document.documentElement;
+    const start = () => { runTerminal(); typeRoles(); };
+    if (!root.classList.contains('show-landing')) return start();
+    document.addEventListener('landing:done', start, { once: true });
+    // กันค้าง: ถ้า landing.js โหลดไม่ขึ้น ให้เข้าเว็บเลย
+    window.addEventListener('load', () => {
+        if (window.__landingBooted) return;
+        document.getElementById('landing')?.remove();
+        root.classList.remove('show-landing', 'landing-lock');
+        start();
+    });
+}
