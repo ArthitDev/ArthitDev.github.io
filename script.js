@@ -7,7 +7,7 @@ const GH = 'https://github.com/ArthitDev/';
 const PROJECTS = [
     {
         title: 'Smart Wound Care',
-        badge: 'โปรเจกต์เด่น',
+        badge: '★ โปรเจกต์เด่น',
         icon: 'fa-solid fa-kit-medical',
         desc: 'เว็บแอปให้คำแนะนำการดูแลแผลอัจฉริยะ อัปโหลดรูปเพื่อวิเคราะห์ภาพแผลด้วย AI มีระบบบทความ ข้อมูลแผล และหลังบ้านสำหรับผู้ดูแล',
         tags: ['Next.js', 'TypeScript', 'MUI', 'Express', 'TypeORM', 'MySQL', 'AI'],
@@ -361,16 +361,6 @@ function setupReveal() {
     });
 }
 
-function setupSpotlight() {
-    document.addEventListener('pointermove', (e) => {
-        const card = e.target.closest && e.target.closest('.card');
-        if (!card) return;
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-        card.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-}
-
 function fillDynamicText() {
     const birth = new Date(2000, 10, 21); // 21 พ.ย. 2543
     const now = new Date();
@@ -386,7 +376,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fillDynamicText();
     setupNav();
     setupReveal();
-    setupSpotlight();
     runTerminal();
     typeRoles();
 });
