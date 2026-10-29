@@ -28,13 +28,62 @@
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // ตัดสินใจก่อน render ว่าจะโชว์ intro ไหม (ครั้งแรกของ session, ไม่มี #hash, ไม่ได้ลด motion, หรือมี ?intro)
+        (function () {
+            var d = document.documentElement, seen = false;
+            try { seen = sessionStorage.getItem('al-intro-seen') === '1'; } catch (e) { }
+            var force = /[?&]intro\b/.test(location.search);
+            var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (force || (!seen && !location.hash && !reduce)) d.classList.add('show-landing');
+        })();
+    </script>
     <script src="./script.js" defer></script>
+    <script src="./landing.js" defer></script>
 </head>
 
 <body>
+    <!-- Landing intro -->
+    <div class="landing" id="landing" role="dialog" aria-modal="true" aria-label="หน้าต้อนรับ Arthit LungYa">
+        <div class="landing__shutters" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <canvas class="landing__canvas" id="landingCanvas" aria-hidden="true"></canvas>
+
+        <div class="landing__ui">
+            <div class="landing__top">
+                <span>AL<span class="landing__slash">/</span>PORTFOLIO '26</span>
+                <span id="landingClock" class="landing__clock">BKK --:--:--</span>
+                <button type="button" class="landing__skip" id="landingSkip">SKIP <i class="fa-solid fa-forward"></i></button>
+            </div>
+
+            <h1 class="sr-only">Arthit LungYa — Full-Stack Developer</h1>
+
+            <div class="landing__center">
+                <p class="landing__line landing__line--main" data-scramble="FULL-STACK DEVELOPER"></p>
+                <p class="landing__line" data-scramble="WEB · BACKEND · AI"></p>
+                <button type="button" class="landing__enter" id="landingEnter">
+                    <span class="landing__enter-label">เข้าสู่เว็บไซต์</span>
+                    <span class="landing__enter-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </button>
+                <small class="landing__hint">กด Enter หรือคลิก</small>
+            </div>
+
+            <div class="landing__bottom">
+                <div class="landing__load">
+                    <span>LOADING</span>
+                    <span class="landing__count" id="landingCount">000</span>
+                    <span class="landing__bar"><span id="landingBar"></span></span>
+                </div>
+                <div class="landing__marquee" aria-hidden="true">
+                    <div class="landing__track"><span>Next.js</span><i>/</i><span>TypeScript</span><i>/</i><span>React</span><i>/</i><span>Node.js</span><i>/</i><span>Express</span><i>/</i><span>Python</span><i>/</i><span>FastAPI</span><i>/</i><span>LangChain</span><i>/</i><span>MySQL</span><i>/</i><span>PostgreSQL</span><i>/</i><span>Docker</span><i>/</i><span>Tailwind</span><i>/</i><span>Next.js</span><i>/</i><span>TypeScript</span><i>/</i><span>React</span><i>/</i><span>Node.js</span><i>/</i><span>Express</span><i>/</i><span>Python</span><i>/</i><span>FastAPI</span><i>/</i><span>LangChain</span><i>/</i><span>MySQL</span><i>/</i><span>PostgreSQL</span><i>/</i><span>Docker</span><i>/</i><span>Tailwind</span><i>/</i></div>
+                </div>
+            </div>
+        </div>
+        <div class="landing__cursor" id="landingCursor" hidden></div>
+    </div>
+
     <!-- Navigation -->
     <header class="nav" id="nav">
-        <div class="nav__inner">
+        <div class="nav__inner" data-intro style="--i:0">
             <a href="#home" class="nav__brand" aria-label="กลับหน้าหลัก">
                 <span class="nav__name">ARTHIT LUNGYA</span>
             </a>
@@ -55,26 +104,26 @@
         <!-- Hero -->
         <section class="hero" id="home">
             <div class="hero__text">
-                <p class="eyebrow">Developer Portfolio</p>
+                <p class="eyebrow" data-intro style="--i:1">Developer Portfolio</p>
                 <h1 class="hero__title">
-                    <span class="hero__hello">สวัสดีครับ ผมชื่อ</span>
-                    <span class="hero__name">Arthit<br>LungYa<span class="dot">.</span></span>
+                    <span class="hero__hello" data-intro style="--i:2">สวัสดีครับ ผมชื่อ</span>
+                    <span class="hero__name"><span class="hero__line"><span data-intro style="--i:3">Arthit</span></span><span class="hero__line"><span data-intro style="--i:4">LungYa<span class="dot">.</span></span></span></span>
                 </h1>
-                <p class="hero__role">
+                <p class="hero__role" data-intro style="--i:5">
                     <span class="mono">&gt;</span>
                     <span id="roleText">Full-Stack Developer</span><span class="caret"></span>
                 </p>
-                <p class="hero__desc">
+                <p class="hero__desc" data-intro style="--i:6">
                     นักพัฒนาสาย IT จากมหาวิทยาลัยราชภัฏเชียงราย ชอบสร้างเว็บแอป ระบบหลังบ้าน
                     และเครื่องมือ AI ที่ใช้งานได้จริง ไม่ใช่แค่เขียนเป็น
                 </p>
-                <div class="hero__cta">
+                <div class="hero__cta" data-intro style="--i:7">
                     <a href="#projects" class="btn btn--primary">ดูผลงาน <i class="fa-solid fa-arrow-right"></i></a>
                     <a href="#contact" class="btn btn--ghost"><i class="fa-regular fa-paper-plane"></i> ติดต่อผม</a>
                 </div>
             </div>
 
-            <div class="terminal" aria-label="ตัวอย่างหน้าจอ terminal">
+            <div class="terminal" data-intro style="--i:5" aria-label="ตัวอย่างหน้าจอ terminal">
                 <div class="terminal__bar">
                     <span class="tl"></span><span class="tl"></span><span class="tl"></span>
                     <span class="terminal__title">arthit@dev: ~</span>
@@ -204,7 +253,7 @@
 
     <footer class="footer">
         <span>© <span id="year"></span> Arthit LungYa</span>
-        <span class="mono">built with HTML · CSS · JS</span>
+        <a href="./?intro" class="footer__replay mono"><i class="fa-solid fa-rotate-left"></i> ดูอินโทรอีกครั้ง</a>
     </footer>
 </body>
 
