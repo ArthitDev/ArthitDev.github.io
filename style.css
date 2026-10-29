@@ -99,12 +99,6 @@ ol {
     gap: 12px;
 }
 
-.nav__logo {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-}
-
 .nav__name {
     font-family: var(--display);
     font-weight: 800;
