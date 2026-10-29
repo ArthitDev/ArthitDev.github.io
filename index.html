@@ -1,195 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
-
-    <!-- HTML Meta Tags -->
-    <title>My Portfolio</title>
-    <meta name="description" content="Hi, I'm Arthit This is My Portfolio You Can Visit it Now.">
-
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="http://student.crru.ac.th/641413017/CIT5602/641413017_Portfolio/#">
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="My Portfolio">
-    <meta property="og:description" content="Hi, I'm Arthit This is My Portfolio You Can Visit it Now.">
-    <meta property="og:image" content="https://i.ibb.co/BC0qTTH/preview-2.png">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="student.crru.ac.th">
-    <meta property="twitter:url" content="http://student.crru.ac.th/641413017/CIT5602/641413017_Portfolio/#">
-    <meta name="twitter:title" content="My Portfolio">
-    <meta name="twitter:description" content="Hi, I'm Arthit This is My Portfolio You Can Visit it Now.">
-    <meta name="twitter:image" content="https://i.ibb.co/BC0qTTH/preview-2.png">
-
-
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthit LungYa — Portfolio</title>
+    <meta name="description" content="Portfolio ของ อาทิตย์ ลุงหยะ (Arthit LungYa) นักพัฒนาเว็บและซอฟต์แวร์ รวมผลงานและช่องทางติดต่อ">
+    <meta name="theme-color" content="#07080c">
+
+    <!-- Open Graph -->
+    <meta property="og:url" content="https://arthitdev.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Arthit LungYa — Portfolio">
+    <meta property="og:description" content="นักพัฒนาเว็บและซอฟต์แวร์ รวมผลงานและช่องทางติดต่อ">
+    <meta property="og:image" content="https://arthitdev.github.io/images/og-cover.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arthit LungYa — Portfolio">
+    <meta name="twitter:description" content="นักพัฒนาเว็บและซอฟต์แวร์ รวมผลงานและช่องทางติดต่อ">
+    <meta name="twitter:image" content="https://arthitdev.github.io/images/og-cover.png">
+
+    <link rel="icon" href="./images/Arthit_2.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="./script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="shortcut icon" href="./images/Arthit_2.png" type="image/x-icon">
-    <title>My Portfolio</title>
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <a href="https://arthitdev.github.io/">
-                <img src="./images/ARTHIT LUNGYA-White.png" alt="">
-            </a>
-        </div>
-        <input type="checkbox" id="nav_check" hidden>
-        <nav>
-            <div class="logo">
-                <img src="./images/ARTHIT LUNGYA-Back.png" alt="">
-            </div>
-            <div class="nav-bar">
-                <ul>
-                    <li><a href="#" onclick="funcshow('1')">หน้าหลัก</a></li>
-                    <li><a href="#" onclick="funcshow('2')">ข้อมูลส่วนตัว</a></li>
-                    <li><a href="#" onclick="funcshow('3')">ทักษะและความสามารถ</a></li>
-                    <li><a href="#" onclick="funcshow('4')">เป้าหมายในชีวิต</a></li>
-                    <li><a href="#" onclick="funcshow('5')">ช่องทางติดต่อ</a></li>
-                    <li class="dropdown-link"><a href="#">
-                            ผลงานเก่า<i class="fa-solid fa-chevron-down"></i></a>
-                        <ul class="dropdown">
-                            <li><a href="http://student.crru.ac.th/641413017/CIT5602/CRRU-History/"
-                                    target="_blank">ใบงานที่ 1 </a></li>
-                            <li><a href="http://student.crru.ac.th/641413017/CIT5602/CRRU-Register-Form/"
-                                    target="_blank">ใบงานที่ 2 </a></li>
-                            <li><a href="http://student.crru.ac.th/641413017/CIT5602/CRRU-Facebook-Form/"
-                                    target="_blank">ใบงานที่ 2.1 </a></li>
-                            <li><a href="http://student.crru.ac.th/641413017/CIT5602/CRRU-Coffe-History/"
-                                    target="_blank">ใบงานที่ 3 </a></li>
-                            <li><a href="http://student.crru.ac.th/641413017/CIT5603/React-Place-Project/"
-                                    target="_blank">ใบงานที่ 4 </a></li>
-                            <li><a href="http://student.crru.ac.th/641413017/CIT-6003/index.html"
-                                    target="_blank">ใบงานที่ 5 </a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+    <div class="bg" aria-hidden="true">
+        <div class="bg-grid"></div>
+        <div class="bg-glow bg-glow--1"></div>
+        <div class="bg-glow bg-glow--2"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+        <a href="#home" class="nav__brand" aria-label="กลับหน้าหลัก">
+            <span class="nav__logo">A</span>
+            <span class="nav__name">arthit<span class="accent">.dev</span></span>
+        </a>
+        <nav class="nav__links" id="navLinks">
+            <a href="#about">เกี่ยวกับ</a>
+            <a href="#skills">ทักษะ</a>
+            <a href="#projects">ผลงาน</a>
+            <a href="#goal">เป้าหมาย</a>
+            <a href="#contact">ติดต่อ</a>
         </nav>
-        <label for="nav_check" class="hamburger" onclick="myFunction(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-        </label>
+        <button class="nav__burger" id="navBurger" aria-label="เปิดเมนู" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
-    <div id="page-1">
-        <div class="home-1">
-            <div class="home-1">
-                <img src="./images/me.png" class="me">
-            </div>
-            <div class="home-2">
-                <h1>สวัสดีครับ <span>ผมชื่ออาทิตย์</span></h1>
-                641413017 อาทิตย์ ลุงหยะ นักศึกษา IT ปี 3 เรียนที่มหาวิทยาลัยราชภัฏเชียงราย
-                ผมได้สร้างเว็บไซต์นี้ขึ้นมาเพื่อแนะนำตัวเองให้ทุกคนได้รู้จัก และ ฝึกการสร้างเว็บไซต์เพื่อพัฒนาตนเอง
-                สามารถดาวน์โหลด Resume ได้ด้านล่างเลยครับ<p></p>
-                <a href="https://drive.google.com/uc?export=download&id=1Vywf-ImrIIRFibSaBwq9LpJex3z4ljgM">Downdload
-                    Resume [TH]</a>
-                <a href="https://drive.google.com/uc?export=download&id=1QHT3RvujBPXLvWS_9jfpNoVISQk_dlSV">Downdload
-                    Resume [EN]</a>
-            </div>
-        </div>
-        <!---- Portfolio เดิม https://drive.google.com/uc?export=download&id=1CZdoBz718ICAGJ-0I636UAIebl0A8heo-->
-    </div>
-    <div id="page-2">
-        <form>
-            <h1>ข้อมูลส่วนตัว</h1>
-            <div class="content-page-2">
-                <a><b>ชื่อ :</b> อาทิตย์ ลุงหยะ<br>
-                    <b>ชื่อเล่น :</b> ทิต<br>
-                    <b>อายุ : </b> 23 ปี<br>
-                    <b>เพศ : </b> ชาย<br>
-                    <b>วันเกิด :</b> วัน อาทิตย์ที่ 21 เดือนพฤศจิกายน พ.ศ 2543<br>
-                    <b>น้ำหนัก :</b> 65 กิโลกรัม<br>
-                    <b>ส่วนสูง :</b> 170 เซนติเมตร<br>
-                    <b>สัญชาติ :</b> ไทย <br>
-                    <b>เชื้อชาติ :</b> ไทยใหญ่<br>
-                    <b>ศาสนา :</b> พุทธ<br>
-                </a>
-            </div>
-            <h1>ประวัติการศึกษา</h1>
-            <div class="content2-page-2">
-                <a><b>อนุบาล :</b> ศูนย์พัฒณาเด็กเล็กบ้านท่าตอน<br>
-                    <b>ประถมต้น :</b> โรงเรียนบ้านท่าตอน - โรงเรียนไทยรัฐวิทยา 12<br>
-                    <b>ประถมปลาย :</b> โรงเรียนบ้านปางต้นเดื่อ<br>
-                    <b>มัธยมต้น :</b> โรงเรียนบ้านปางต้นเดื่อ<br>
-                    <b>มัธยมปลาย :</b> ศูนย์การศึกษานอกระบบ อำเภอแม่อาย<br>
-                    <b>ปัจจุบัน ปริญญาตรี :</b> มหาวิทยาลัยราชภัฏเชียงราย
-                </a>
-            </div>
-        </form>
-    </div>
-    <div id="page-3">
-        <form class="form-page-3">
-            <h1>ทักษะและความสามารถ</h1>
-            <div class="content-page-3">
-                <h3>ด้านการเขียนโปรแกรม</h3>
-                <a>ภาษา C# : </a>ระดับปานกลาง<br>
-                <a>ภาษา Python : </a>ระดับปานกลาง<br>
-                <a>ภาษา SQL : </a>ระดับต่ำ<br>
-                <a>HTML : </a>ระดับต่ำ-กลาง<br>
-                <a>CSS : </a>ระดับต่ำ-กลาง<br>
-                <a>Shell Script : </a>ระดับกลาง<br>
-                <div class="content-page-4">
-                    <h3>ด้านการใช้งานโปรแกรม</h3>
-                    <a>Microsoft Word : </a>ระดับปานกลาง<br>
-                    <a>Microsoft Excel : </a>ระดับปานกลาง<br>
-                    <a>Microsoft Powerpoint : </a>ระดับปานกลาง<br>
-                    <a>Adobe Photoshop : </a>ระดับต่ำ-กลาง<br>
-                    <a>Adobe After Effect : </a>ระดับต่ำ-กลาง<br>
-                    <a>Adobe Premiere Pro : </a>ระดับกลาง<br>
-                </div>
-                <div class="content-page-5">
-                    <h3>ทั่วไป</h3>
-                    <a>ทำงานร่วมกันเป็นทีม : </a>ระดับปานกลาง<br>
-                    <a>ความอดทนต่อแรงกดดัน : </a>ระดับสูง<br>
-                    <a>ความเป็นผู้นำ: </a>ระดับกลาง<br>
-                    <a>ความตรงต่อเวลา : </a>ระดับต่ำ-กลาง<br>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero__text">
+                <p class="eyebrow"><span class="dot"></span> Developer Portfolio</p>
+                <h1 class="hero__title">
+                    <span class="hero__hello">สวัสดีครับ ผมชื่อ</span>
+                    <span class="hero__name"><span class="grad">Arthit</span><br><span class="outline">LungYa</span></span>
+                </h1>
+                <p class="hero__role">
+                    <span class="mono">&gt;</span>
+                    <span id="roleText">Full-Stack Developer</span><span class="caret"></span>
+                </p>
+                <p class="hero__desc">
+                    นักพัฒนาสาย IT จากมหาวิทยาลัยราชภัฏเชียงราย ชอบสร้างเว็บแอป ระบบหลังบ้าน
+                    และเครื่องมือ AI ที่ใช้งานได้จริง ไม่ใช่แค่เขียนเป็น
+                </p>
+                <div class="hero__cta">
+                    <a href="#projects" class="btn btn--primary">ดูผลงาน <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="https://drive.google.com/uc?export=download&id=1Vywf-ImrIIRFibSaBwq9LpJex3z4ljgM"
+                        class="btn btn--ghost" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i>
+                        Resume TH</a>
+                    <a href="https://drive.google.com/uc?export=download&id=1QHT3RvujBPXLvWS_9jfpNoVISQk_dlSV"
+                        class="btn btn--ghost" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i>
+                        Resume EN</a>
                 </div>
             </div>
-        </form>
-    </div>
-    <div id="page-4">
-        <form class="form-page-4">
-            <h1>เป้าหมายในชีวิต</h1>
-            <div class="content-page-6">
-                <a>เป้าหมายในชีวิตสูงสุดของผมนั้น คือ <br><span>"การเรียนจบ ได้ทำงานตรงสาย สามารถเขียนโปรแกรมได้จริงๆ
-                        ไม่ใช่แค่เขียนเป็น ทำงานเก็บเงินและดูแลพ่อแม่ ได้สร้างสรรค์เทคโนโลยีใหม่ๆ"</span><br>
-                    "ทุกย่างก้าว มีอุปสรรคเสมอ"</a>
+
+            <div class="terminal" aria-label="ตัวอย่างหน้าจอ terminal">
+                <div class="terminal__bar">
+                    <span class="tl tl--r"></span><span class="tl tl--y"></span><span class="tl tl--g"></span>
+                    <span class="terminal__title">arthit@dev: ~</span>
+                </div>
+                <pre class="terminal__body" id="terminal"></pre>
             </div>
-        </form>
-    </div>
-    <div id="page-5">
-        <div class="wrapper">
-            <a href="https://www.facebook.com/MR.Arthit.Profile" class="icon facebook" target="_blank">
-                <div class="tooltip">Facebook</div>
-                <span><i class="fab fa-facebook-f"></i></span>
-            </a>
-            <a href="https://twitter.com/ArthitDev" class="icon twitter" target="_blank">
-                <div class="tooltip">Twitter</div>
-                <span><i class="fab fa-twitter"></i></span>
-            </a>
-            <a href="https://line.me/ti/p/~0998905700" class="icon line" target="_blank">
-                <div class="tooltip">Line</div>
-                <span><i class="fa-brands fa-line"></i></span>
-            </a>
-            <a href="https://github.com/ArthitDev" class="icon github" target="_blank">
-                <div class="tooltip">Github</div>
-                <span><i class="fab fa-github"></i></span>
-            </a>
-            <a href="https://www.youtube.com/channel/UCfipXsHPTcd-5YoYV97X9fg" class="icon youtube" target="_blank">
-                <div class="tooltip">Youtube</div>
-                <span><i class="fab fa-youtube"></i></span>
-            </a>
-        </div>
-        <footer class="credit">MR.Arthit LungYa</footer>
-    </div>
+
+            <a href="#about" class="scroll-hint" aria-label="เลื่อนลง"><span></span></a>
+        </section>
+
+        <!-- About -->
+        <section class="section" id="about">
+            <div class="section__head reveal">
+                <span class="section__num">01</span>
+                <h2>เกี่ยวกับผม</h2>
+            </div>
+
+            <div class="about">
+                <div class="card about__info reveal">
+                    <h3><i class="fa-regular fa-user"></i> ข้อมูลส่วนตัว</h3>
+                    <dl class="kv">
+                        <div><dt>ชื่อ</dt><dd>อาทิตย์ ลุงหยะ</dd></div>
+                        <div><dt>ชื่อเล่น</dt><dd>ทิต</dd></div>
+                        <div><dt>อายุ</dt><dd><span id="age">-</span> ปี</dd></div>
+                        <div><dt>วันเกิด</dt><dd>21 พฤศจิกายน 2543</dd></div>
+                        <div><dt>สัญชาติ</dt><dd>ไทย</dd></div>
+                        <div><dt>เชื้อชาติ</dt><dd>ไทยใหญ่</dd></div>
+                        <div><dt>ศาสนา</dt><dd>พุทธ</dd></div>
+                    </dl>
+                </div>
+
+                <div class="card about__edu reveal">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษา</h3>
+                    <ol class="timeline">
+                        <li>
+                            <span class="timeline__tag">ปริญญาตรี</span>
+                            <strong>มหาวิทยาลัยราชภัฏเชียงราย</strong>
+                            <span>สาขาเทคโนโลยีสารสนเทศ (IT)</span>
+                        </li>
+                        <li>
+                            <span class="timeline__tag">มัธยมปลาย</span>
+                            <strong>ศูนย์การศึกษานอกระบบ อำเภอแม่อาย</strong>
+                        </li>
+                        <li>
+                            <span class="timeline__tag">ประถมปลาย – มัธยมต้น</span>
+                            <strong>โรงเรียนบ้านปางต้นเดื่อ</strong>
+                        </li>
+                        <li>
+                            <span class="timeline__tag">ประถมต้น</span>
+                            <strong>โรงเรียนบ้านท่าตอน – โรงเรียนไทยรัฐวิทยา 12</strong>
+                        </li>
+                        <li>
+                            <span class="timeline__tag">อนุบาล</span>
+                            <strong>ศูนย์พัฒนาเด็กเล็กบ้านท่าตอน</strong>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section" id="skills">
+            <div class="section__head reveal">
+                <span class="section__num">02</span>
+                <h2>ทักษะและความสามารถ</h2>
+            </div>
+            <div class="skills" id="skillsGrid"></div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section" id="projects">
+            <div class="section__head reveal">
+                <span class="section__num">03</span>
+                <h2>ผลงาน</h2>
+            </div>
+            <div class="filters reveal" id="filters" role="tablist" aria-label="กรองผลงาน"></div>
+            <div class="projects" id="projectGrid"></div>
+            <div class="projects__more reveal">
+                <a href="https://github.com/ArthitDev?tab=repositories" target="_blank" rel="noopener"
+                    class="btn btn--ghost"><i class="fa-brands fa-github"></i> ดูทั้งหมดบน GitHub</a>
+            </div>
+        </section>
+
+        <!-- Goal -->
+        <section class="section" id="goal">
+            <div class="section__head reveal">
+                <span class="section__num">04</span>
+                <h2>เป้าหมายในชีวิต</h2>
+            </div>
+            <figure class="goal reveal">
+                <blockquote>
+                    “เรียนจบ ได้ทำงานตรงสาย <em>เขียนโปรแกรมได้จริงๆ</em> ไม่ใช่แค่เขียนเป็น
+                    ทำงานเก็บเงินดูแลพ่อแม่ และได้สร้างสรรค์เทคโนโลยีใหม่ๆ”
+                </blockquote>
+                <figcaption><span class="mono">//</span> ทุกย่างก้าว มีอุปสรรคเสมอ</figcaption>
+            </figure>
+        </section>
+
+        <!-- Contact -->
+        <section class="section" id="contact">
+            <div class="section__head reveal">
+                <span class="section__num">05</span>
+                <h2>ช่องทางติดต่อ</h2>
+            </div>
+            <div class="contact reveal">
+                <p class="contact__lead">มีโปรเจกต์ที่อยากคุย หรืออยากชวนทำงานด้วย ทักมาได้เลยครับ</p>
+                <div class="socials">
+                    <a href="https://github.com/ArthitDev" target="_blank" rel="noopener" class="social">
+                        <i class="fa-brands fa-github"></i><span>GitHub</span><small>@ArthitDev</small>
+                    </a>
+                    <a href="https://www.facebook.com/MR.Arthit.Profile" target="_blank" rel="noopener" class="social">
+                        <i class="fa-brands fa-facebook-f"></i><span>Facebook</span><small>MR.Arthit</small>
+                    </a>
+                    <a href="https://line.me/ti/p/~0998905700" target="_blank" rel="noopener" class="social">
+                        <i class="fa-brands fa-line"></i><span>LINE</span><small>เพิ่มเพื่อน</small>
+                    </a>
+                    <a href="https://twitter.com/ArthitDev" target="_blank" rel="noopener" class="social">
+                        <i class="fa-brands fa-x-twitter"></i><span>X / Twitter</span><small>@ArthitDev</small>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCfipXsHPTcd-5YoYV97X9fg" target="_blank" rel="noopener"
+                        class="social">
+                        <i class="fa-brands fa-youtube"></i><span>YouTube</span><small>ช่องของผม</small>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>© <span id="year"></span> Arthit LungYa</span>
+        <span class="mono">built with HTML · CSS · JS</span>
+    </footer>
 </body>
 
 </html>
